@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MK Frozen Food</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">MK</span><div><b>MK Frozen Food</b><small>Karachi Delivery</small></div></div>
+  <button id="cartBtn" class="cart">🛒 Cart <span id="cartCount">0</span></button>
+</header>
+
+<main>
+<section class="hero">
+  <div><h1>Frozen food, delivered.</h1><p>Fresh frozen favourites delivered across Karachi.</p></div>
+</section>
+
+<div class="toolbar">
+  <input id="search" placeholder="Search frozen food...">
+  <select id="category"><option value="All">All categories</option><option>Chicken</option><option>Fries</option><option>Snacks</option><option>Kebabs</option></select>
+</div>
+
+<section id="products" class="grid"></section>
+
+<section id="checkout" class="panel hidden">
+  <div class="panelHead"><h2>Checkout</h2><button onclick="closeCheckout()">✕</button></div>
+  <div id="checkoutItems"></div>
+  <div class="total" id="checkoutTotal"></div>
+
+  <h3>Delivery location</h3>
+  <button class="primary" onclick="getLocation()">📍 Use my current location</button>
+  <div id="locationStatus" class="status">Or enter your address below.</div>
+  <textarea id="address" placeholder="House/shop, street, area, block, Karachi"></textarea>
+  <div class="coords"><span id="coords">No GPS location selected</span></div>
+
+  <h3>Payment</h3>
+  <div class="payments">
+    <label><input type="radio" name="pay" value="COD" checked> Cash on Delivery</label>
+    <label><input type="radio" name="pay" value="Cash"> Cash</label>
+    <label><input type="radio" name="pay" value="Online"> Online Payment</label>
+  </div>
+
+  <input id="customerName" placeholder="Customer name">
+  <input id="customerPhone" placeholder="Phone number">
+  <button class="primary big" onclick="placeOrder()">Place Order</button>
+</section>
+
+<section id="success" class="panel hidden">
+  <div class="success">✓</div>
+  <h2>Order received</h2>
+  <p id="orderText"></p>
+  <button class="primary" onclick="sendWhatsAppMessage()">Send order to WhatsApp</button>
+  <button class="secondary" onclick="closeSuccess()">Back to shop</button>
+</section>
+</main>
+
+<div id="cartDrawer" class="drawer hidden">
+  <div class="panelHead"><h2>Your Cart</h2><button onclick="toggleCart()">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="total" id="cartTotal"></div>
+  <button class="primary big" onclick="openCheckout()">Checkout</button>
+</div>
+<div id="shade" class="shade hidden" onclick="toggleCart()"></div>
+<script src="app.js"></script>
+</body>
+</html>
