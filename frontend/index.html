@@ -1,68 +1,242 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MK Frozen Food</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK Frozen Panda</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #f4f6f8; color: #333; }
+
+    /* Pink & Purple-Blue Gradient Header */
+    header {
+      background: linear-gradient(135deg, #EC407A, #3F51B5);
+      color: white; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .brand-title { font-size: 20px; font-weight: bold; }
+    .panda-emoji { font-size: 26px; background: rgba(255, 255, 255, 0.25); padding: 4px 10px; border-radius: 50%; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 15px; }
+
+    /* Top Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #EC407A, #3F51B5);
+      color: white; padding: 20px; border-radius: 12px;
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    }
+
+    /* Controls: Search & Category */
+    .controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .search-input, .category-select {
+      padding: 10px 14px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; flex: 1; min-width: 150px;
+    }
+
+    .section-title { color: #3F51B5; margin: 20px 0 10px 0; font-size: 20px; font-weight: bold; border-bottom: 2px solid #EC407A; padding-bottom: 5px; }
+
+    /* Grid Layout */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+    .card { background: white; border-radius: 12px; border: 1px solid #eee; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
+    .card-img { width: 100%; height: 140px; object-fit: cover; background: #eee; }
+    .card-body { padding: 12px; flex-grow: 1; }
+    .card-title { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+    .card-desc { font-size: 12px; color: #666; margin-bottom: 8px; }
+    .card-price { font-size: 16px; font-weight: bold; color: #EC407A; margin-bottom: 10px; }
+
+    .order-btn {
+      width: 100%; background: linear-gradient(135deg, #EC407A, #3F51B5);
+      color: white; border: none; padding: 10px; border-radius: 6px;
+      font-weight: bold; cursor: pointer;
+    }
+
+    /* Modal Form */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 400px; }
+    .modal-content input, .modal-content textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 6px; }
+  </style>
 </head>
 <body>
-<header>
-  <div class="brand"><span class="logo">MK</span><div><b>MK Frozen Food</b><small>Karachi Delivery</small></div></div>
-  <button id="cartBtn" class="cart">🛒 Cart <span id="cartCount">0</span></button>
-</header>
 
-<main>
-<section class="hero">
-  <div><h1>Frozen food, delivered.</h1><p>Fresh frozen favourites delivered across Karachi.</p></div>
-</section>
+  <header>
+    <div class="brand-title">MK Frozen Panda</div>
+    <div class="panda-emoji">🐼</div>
+  </header>
 
-<div class="toolbar">
-  <input id="search" placeholder="Search frozen food...">
-  <select id="category"><option value="All">All categories</option><option>Chicken</option><option>Fries</option><option>Snacks</option><option>Kebabs</option></select>
-</div>
+  <div class="container">
+    <div class="hero-banner">
+      <div>
+        <h2>Frozen food, delivered.</h2>
+        <p>Fresh frozen favourites delivered across Karachi.</p>
+      </div>
+      <div style="font-size: 40px;">🐼</div>
+    </div>
 
-<section id="products" class="grid"></section>
+    <!-- Single Items Section -->
+    <div class="section-title">Single Items (Rate Card)</div>
+    <div class="grid">
+      <div class="card">
+        <img src="images/samosa.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Chicken+Samosa'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Chicken Samosa</div>
+          <div class="card-desc">Per Piece Rate</div>
+          <div class="card-price">Rs. 40</div>
+          <button class="order-btn" onclick="openOrder('Chicken Samosa', 'Rs. 40')">Order Now</button>
+        </div>
+      </div>
 
-<section id="checkout" class="panel hidden">
-  <div class="panelHead"><h2>Checkout</h2><button onclick="closeCheckout()">✕</button></div>
-  <div id="checkoutItems"></div>
-  <div class="total" id="checkoutTotal"></div>
+      <div class="card">
+        <img src="images/roll.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Chicken+Roll'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Chicken Vegetable Roll</div>
+          <div class="card-desc">Per Piece Rate</div>
+          <div class="card-price">Rs. 50</div>
+          <button class="order-btn" onclick="openOrder('Chicken Vegetable Roll', 'Rs. 50')">Order Now</button>
+        </div>
+      </div>
 
-  <h3>Delivery location</h3>
-  <button class="primary" onclick="getLocation()">📍 Use my current location</button>
-  <div id="locationStatus" class="status">Or enter your address below.</div>
-  <textarea id="address" placeholder="House/shop, street, area, block, Karachi"></textarea>
-  <div class="coords"><span id="coords">No GPS location selected</span></div>
+      <div class="card">
+        <img src="images/sticks.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Chicken+Sticks'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Chicken Sticks</div>
+          <div class="card-desc">Per Piece Rate</div>
+          <div class="card-price">Rs. 60</div>
+          <button class="order-btn" onclick="openOrder('Chicken Sticks', 'Rs. 60')">Order Now</button>
+        </div>
+      </div>
 
-  <h3>Payment</h3>
-  <div class="payments">
-    <label><input type="radio" name="pay" value="COD" checked> Cash on Delivery</label>
-    <label><input type="radio" name="pay" value="Cash"> Cash</label>
-    <label><input type="radio" name="pay" value="Online"> Online Payment</label>
+      <div class="card">
+        <img src="images/popcorn.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Chicken+Popcorn'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Chicken Popcorn</div>
+          <div class="card-desc">30 Pieces</div>
+          <div class="card-price">Rs. 300</div>
+          <button class="order-btn" onclick="openOrder('Chicken Popcorn (30 Pcs)', 'Rs. 300')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/zinger.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Zinger+Strips'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Chicken Zinger Strips</div>
+          <div class="card-desc">10 Pieces</div>
+          <div class="card-price">Rs. 350</div>
+          <button class="order-btn" onclick="openOrder('Chicken Zinger Strips (10 Pcs)', 'Rs. 350')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/dynamite.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Dynamite+Chicken'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Dynamite Chicken</div>
+          <div class="card-desc">10 Pieces</div>
+          <div class="card-price">Rs. 200</div>
+          <button class="order-btn" onclick="openOrder('Dynamite Chicken (10 Pcs)', 'Rs. 200')">Order Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combo Deals Section -->
+    <div class="section-title">Special Combo Deals</div>
+    <div class="grid">
+      <div class="card">
+        <img src="images/deal1.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Starter+Deal'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Starter Deal</div>
+          <div class="card-desc">6 Tikka Samosa • 6 Pizza Samosa • 6 Sticks (18 Pcs)</div>
+          <div class="card-price">Rs. 960</div>
+          <button class="order-btn" onclick="openOrder('Starter Deal (18 Pcs)', 'Rs. 960')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/deal2.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Special+Deal'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Special Deal</div>
+          <div class="card-desc">12 Chicken Samosas • 12 Veg Rolls (24 Pcs)</div>
+          <div class="card-price">Rs. 1080</div>
+          <button class="order-btn" onclick="openOrder('Special Deal (24 Pcs)', 'Rs. 1080')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/deal3.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Mega+Deal'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Mega Special Deal</div>
+          <div class="card-desc">12 Samosa • 12 Rolls • 10 Sticks • 10 Tikka (44 Pcs)</div>
+          <div class="card-price">Rs. 2000</div>
+          <button class="order-btn" onclick="openOrder('Mega Special Deal (44 Pcs)', 'Rs. 2000')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/deal4.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=12+Pieces+Deal'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">12 Pieces Deal</div>
+          <div class="card-desc">4 Samosas • 4 Rolls • 4 Sticks (12 Pcs)</div>
+          <div class="card-price">Rs. 600</div>
+          <button class="order-btn" onclick="openOrder('12 Pieces Deal', 'Rs. 600')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/deal5.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Popcorn+Deal'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Popcorn & Sticks Deal</div>
+          <div class="card-desc">12 Chicken Sticks • 20 Popcorn (32 Pcs)</div>
+          <div class="card-price">Rs. 1000</div>
+          <button class="order-btn" onclick="openOrder('Popcorn & Sticks Deal (32 Pcs)', 'Rs. 1000')">Order Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/deal6.jpg" onerror="this.src='https://via.placeholder.com/300x150?text=Value+Combo'" class="card-img">
+        <div class="card-body">
+          <div class="card-title">Value Combo Deal</div>
+          <div class="card-desc">12 Chicken Samosas • 10 Veg Rolls (22 Pcs)</div>
+          <div class="card-price">Rs. 980</div>
+          <button class="order-btn" onclick="openOrder('Value Combo Deal (22 Pcs)', 'Rs. 980')">Order Now</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <input id="customerName" placeholder="Customer name">
-  <input id="customerPhone" placeholder="Phone number">
-  <button class="primary big" onclick="placeOrder()">Place Order</button>
-</section>
+  <!-- Order Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <h3 style="color:#3F51B5; margin-bottom: 5px;">Enter Order Details</h3>
+      <p id="itemText" style="color:#EC407A; font-weight:bold; margin-bottom: 10px;"></p>
+      <input type="text" id="custName" placeholder="Your Name">
+      <input type="tel" id="custPhone" placeholder="Phone / WhatsApp Number">
+      <textarea id="custAddress" rows="3" placeholder="Full Delivery Address"></textarea>
+      <button class="order-btn" onclick="sendWhatsApp()">Confirm Order</button>
+      <button onclick="closeOrder()" style="width:100%; background:none; border:none; margin-top:8px; color:#777; cursor:pointer;">Cancel</button>
+    </div>
+  </div>
 
-<section id="success" class="panel hidden">
-  <div class="success">✓</div>
-  <h2>Order received</h2>
-  <p id="orderText"></p>
-  <button class="primary" onclick="sendWhatsAppMessage()">Send order to WhatsApp</button>
-  <button class="secondary" onclick="closeSuccess()">Back to shop</button>
-</section>
-</main>
+  <script>
+    const waNumber = "9234838905694";
+    let currentItem = "", currentPrice = "";
 
-<div id="cartDrawer" class="drawer hidden">
-  <div class="panelHead"><h2>Your Cart</h2><button onclick="toggleCart()">✕</button></div>
-  <div id="cartItems"></div>
-  <div class="total" id="cartTotal"></div>
-  <button class="primary big" onclick="openCheckout()">Checkout</button>
-</div>
-<div id="shade" class="shade hidden" onclick="toggleCart()"></div>
-<script src="app.js"></script>
+    function openOrder(item, price) {
+      currentItem = item; currentPrice = price;
+      document.getElementById('itemText').innerText = item + " - " + price;
+      document.getElementById('orderModal').style.display = 'flex';
+    }
+
+    function closeOrder() { document.getElementById('orderModal').style.display = 'none'; }
+
+    function sendWhatsApp() {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+
+      if(!name || !phone || !address) { alert("Please fill all details!"); return; }
+
+      const msg = `Assalamu Alaikum!\n\nNew Order:\n*Item:* ${currentItem}\n*Price:* ${currentPrice}\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}`;
+      window.location.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+    }
+  </script>
 </body>
 </html>
