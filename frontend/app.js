@@ -95,7 +95,6 @@ const deals = [
     name: "Deal",
     price: 960,
     pieces: "18 pieces",
-    emoji: "🔥",
      image: "deal1.jpg",
 
     description:
