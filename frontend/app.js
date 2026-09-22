@@ -96,7 +96,7 @@ const deals = [
     price: 960,
     pieces: "18 pieces",
     emoji: "🔥",
-     image: "d1.jpg",
+     image: "deal1.jpg",
 
     description:
       "6 Chicken Tikka Samosas + 6 Pizza Samosas + 6 Chicken Sticks.",
@@ -123,7 +123,7 @@ const deals = [
     price: 1080,
     pieces: "24 pieces",
     emoji: "💖",
-    image: "d2.jpg",
+    image: "deal2.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Vegetable Rolls.",
@@ -146,7 +146,7 @@ const deals = [
     price: 2000,
     pieces: "44 pieces",
     emoji: "👑",
-    image: "d3.jpg",
+    image: "deal3.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Rolls + 10 Chicken Sticks + 10 Chicken Tikka Samosas.",
@@ -177,7 +177,7 @@ const deals = [
     price: 600,
     pieces: "12 pieces",
     emoji: "🎉",
-    image: "d4.jpg",
+    image: "deal4.jpg",
 
     description:
       "4 Chicken Samosas + 4 Chicken Rolls + 4 Chicken Sticks.",
