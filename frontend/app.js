@@ -27,7 +27,7 @@ const products = [
     category: "Samosas",
     price: 40,
     unit: "each",
-    emoji: "🥟",
+    image: "Chicken Samosa.jpg",
     description: "Crispy chicken-filled samosa."
   },
 
@@ -37,7 +37,7 @@ const products = [
     category: "Rolls",
     price: 50,
     unit: "each",
-    emoji: "🌯",
+    image: "Chicken Vegetable Roll.jpg",
     description: "Chicken and vegetable filled crispy roll."
   },
 
@@ -47,7 +47,7 @@ const products = [
     category: "Chicken",
     price: 60,
     unit: "each",
-    emoji: "🍗",
+    image: "Chicken Sticks.jpg",
     description: "Crispy chicken sticks, perfect for snacks."
   },
 
@@ -57,7 +57,7 @@ const products = [
     category: "Snacks",
     price: 300,
     unit: "30 pieces",
-    emoji: "🍿",
+    image: "Chicken Popcorn.jpg",
     description: "30 pieces of delicious chicken popcorn."
   },
 
@@ -67,7 +67,7 @@ const products = [
     category: "Chicken",
     price: 350,
     unit: "10 pieces",
-    emoji: "🍗",
+    image: "Chicken Zinger Strips.jpg",
     description: "10 crispy chicken zinger strips."
   },
 
@@ -77,7 +77,7 @@ const products = [
     category: "Chicken",
     price: 200,
     unit: "10 pieces",
-    emoji: "🌶️",
+    image: "Dynamite Chicken.jpg",
     description: "10 pieces of spicy dynamite chicken."
   }
 
@@ -96,6 +96,7 @@ const deals = [
     price: 960,
     pieces: "18 pieces",
     emoji: "🔥",
+     image: "d1.jpg",
 
     description:
       "6 Chicken Tikka Samosas + 6 Pizza Samosas + 6 Chicken Sticks.",
@@ -122,6 +123,7 @@ const deals = [
     price: 1080,
     pieces: "24 pieces",
     emoji: "💖",
+    image: "d2.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Vegetable Rolls.",
@@ -144,6 +146,7 @@ const deals = [
     price: 2000,
     pieces: "44 pieces",
     emoji: "👑",
+    image: "d3.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Rolls + 10 Chicken Sticks + 10 Chicken Tikka Samosas.",
@@ -174,6 +177,7 @@ const deals = [
     price: 600,
     pieces: "12 pieces",
     emoji: "🎉",
+    image: "d4.jpg",
 
     description:
       "4 Chicken Samosas + 4 Chicken Rolls + 4 Chicken Sticks.",
