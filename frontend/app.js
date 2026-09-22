@@ -493,8 +493,8 @@ function renderDeals() {
           ${badge}
         </div>
 
-        <div class="deal-emoji">
-          ${deal.emoji}
+        <div class="deal-image">
+          <img src="${product.image}">
         </div>
 
         <h3>
