@@ -412,12 +412,12 @@ function renderProducts() {
       <article class="product-card">
 
         <div class="product-image">
-    <img
-        src="${product.image}"
-        alt="${escapeHtml(product.name)}"
-        class="product-img"
-    />
-</div>
+
+          <div class="product-emoji">
+            ${product.emoji}
+          </div>
+
+        </div>
 
 
         <div class="product-content">
