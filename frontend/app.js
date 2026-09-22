@@ -413,8 +413,7 @@ function renderProducts() {
 
         <div class="product-image">
 
-          <div class="product-emoji">
-            ${product.emoji}
+         <img src="${product.image}>
           </div>
 
         </div>
