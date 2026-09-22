@@ -37,7 +37,7 @@ const products = [
     category: "Rolls",
     price: 50,
     unit: "each",
-    image: "Chicken Vegetable Roll.jpg",
+    image: "chicken-vegetable-roll.jpg",
     description: "Chicken and vegetable filled crispy roll."
   },
 
@@ -47,7 +47,7 @@ const products = [
     category: "Chicken",
     price: 60,
     unit: "each",
-    image: "Chicken Sticks.jpg",
+    image: "chicken-sticks.jpg",
     description: "Crispy chicken sticks, perfect for snacks."
   },
 
@@ -57,7 +57,7 @@ const products = [
     category: "Snacks",
     price: 300,
     unit: "30 pieces",
-    image: "Chicken Popcorn.jpg",
+    image: "chicken-popcorn.jpg",
     description: "30 pieces of delicious chicken popcorn."
   },
 
@@ -67,7 +67,7 @@ const products = [
     category: "Chicken",
     price: 350,
     unit: "10 pieces",
-    image: "Chicken Zinger Strips.jpg",
+    image: "chicken-zinger-strips.jpg",
     description: "10 crispy chicken zinger strips."
   },
 
@@ -77,7 +77,7 @@ const products = [
     category: "Chicken",
     price: 200,
     unit: "10 pieces",
-    image: "Dynamite Chicken.jpg",
+    image: "dynamite-chicken.jpg",
     description: "10 pieces of spicy dynamite chicken."
   }
 
