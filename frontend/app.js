@@ -27,7 +27,7 @@ const products = [
     category: "Samosas",
     price: 40,
     unit: "each",
-    image: "chicken samosa.jpg",
+    image: "chicken-samosa.jpg",
     description: "Crispy chicken-filled samosa."
   },
 
