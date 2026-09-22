@@ -27,7 +27,7 @@ const products = [
     category: "Samosas",
     price: 40,
     unit: "each",
-    image: "chicken-samosa.jpg",
+    image: "Chicken Samosa.jpg",
     description: "Crispy chicken-filled samosa."
   },
 
@@ -37,7 +37,7 @@ const products = [
     category: "Rolls",
     price: 50,
     unit: "each",
-    image: "chicken-vegetable-roll.jpg",
+    image: "Chicken Vegetable Roll.jpg",
     description: "Chicken and vegetable filled crispy roll."
   },
 
@@ -47,7 +47,7 @@ const products = [
     category: "Chicken",
     price: 60,
     unit: "each",
-    image: "chicken-sticks.jpg",
+    image: "Chicken Sticks.jpg",
     description: "Crispy chicken sticks, perfect for snacks."
   },
 
@@ -57,7 +57,7 @@ const products = [
     category: "Snacks",
     price: 300,
     unit: "30 pieces",
-    image: "chicken-popcorn.jpg",
+    image: "Chicken Popcorn.jpg",
     description: "30 pieces of delicious chicken popcorn."
   },
 
@@ -67,7 +67,7 @@ const products = [
     category: "Chicken",
     price: 350,
     unit: "10 pieces",
-    image: "chicken-zinger-strips.jpg",
+    image: "Chicken Zinger Strips.jpg",
     description: "10 crispy chicken zinger strips."
   },
 
@@ -77,7 +77,7 @@ const products = [
     category: "Chicken",
     price: 200,
     unit: "10 pieces",
-    image: "dynamite-chicken.jpg",
+    image: "Dynamite Chicken.jpg",
     description: "10 pieces of spicy dynamite chicken."
   }
 
@@ -95,7 +95,8 @@ const deals = [
     name: "Deal",
     price: 960,
     pieces: "18 pieces",
-     image: "deal1.jpg",
+    emoji: "🔥",
+     image: "d1.jpg",
 
     description:
       "6 Chicken Tikka Samosas + 6 Pizza Samosas + 6 Chicken Sticks.",
@@ -122,7 +123,7 @@ const deals = [
     price: 1080,
     pieces: "24 pieces",
     emoji: "💖",
-    image: "deal2.jpg",
+    image: "d2.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Vegetable Rolls.",
@@ -145,7 +146,7 @@ const deals = [
     price: 2000,
     pieces: "44 pieces",
     emoji: "👑",
-    image: "deal3.jpg",
+    image: "d3.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Rolls + 10 Chicken Sticks + 10 Chicken Tikka Samosas.",
@@ -176,7 +177,7 @@ const deals = [
     price: 600,
     pieces: "12 pieces",
     emoji: "🎉",
-    image: "deal4.jpg",
+    image: "d4.jpg",
 
     description:
       "4 Chicken Samosas + 4 Chicken Rolls + 4 Chicken Sticks.",
@@ -412,7 +413,8 @@ function renderProducts() {
 
         <div class="product-image">
 
-          <img src="${product.image}">
+          <div class="product-emoji">
+            ${product.emoji}
           </div>
 
         </div>
@@ -493,9 +495,8 @@ function renderDeals() {
           ${badge}
         </div>
 
-        <div class="deal-image">
-          <img src="${product.emoji}">
-           emoji: "🔥",
+        <div class="deal-emoji">
+          ${deal.emoji}
         </div>
 
         <h3>
