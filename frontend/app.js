@@ -494,7 +494,8 @@ function renderDeals() {
         </div>
 
         <div class="deal-image">
-          <img src="${product.image}">
+          <img src="${product.emoji}">
+           emoji: "🔥",
         </div>
 
         <h3>
