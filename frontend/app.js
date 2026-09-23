@@ -1102,7 +1102,7 @@ function placeOrder() {
 
 
 /* =========================================================
-   WHATSAPP
+   WHATSAPP (Meta Cloud API Integrated)
    ========================================================= */
 
 function sendWhatsAppOrder() {
@@ -1118,62 +1118,63 @@ function sendWhatsAppOrder() {
 
   const lines = [];
 
-
   lines.push("🐼 *NEW MK FROZEN FOOD ORDER*");
-
   lines.push("");
-
   lines.push(`Order: ${lastOrder.id}`);
-
   lines.push(`Customer: ${lastOrder.name}`);
-
   lines.push(`Phone: ${lastOrder.phone}`);
-
   lines.push(`Payment: ${lastOrder.payment}`);
-
   lines.push("");
-
   lines.push("*ITEMS:*");
 
-
   lastOrder.items.forEach(item => {
-
     lines.push(
       `• ${item.name} × ${item.qty} = ${money(item.price * item.qty)}`
     );
-
   });
 
-
   lines.push("");
-
   lines.push(`*TOTAL: ${money(lastOrder.total)}*`);
-
   lines.push("");
-
   lines.push(`Address: ${lastOrder.address}`);
 
-
   if (lastOrder.coords) {
-
     lines.push("");
-
     lines.push(
       `GPS: https://www.google.com/maps?q=${lastOrder.coords.lat},${lastOrder.coords.lng}`
     );
-
   }
 
+  const messageText = lines.join("\n");
 
-  const message =
-    encodeURIComponent(lines.join("\n"));
+  // Meta Cloud API Configuration
+  // Yahan apna Meta Developer Dashboard wala Phone Number ID aur Permanent Access Token dalen
+  const PHONE_NUMBER_ID = "YOUR_PHONE_NUMBER_ID"; 
+  const ACCESS_TOKEN = "YOUR_PERMANENT_ACCESS_TOKEN";
 
-
-  const url =
-    `https://wa.me/${BUSINESS_WHATSAPP}?text=${message}`;
-
-
-  window.open(url, "_blank");
+  // Agar aap direct background API call bhejna chahte hain (Note: Token security ke liye ise baad mein backend par shift kiya ja sakta hai)
+  fetch(`https://graph.facebook.com/v17.0/${PHONE_NUMBER_ID}/messages`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      to: BUSINESS_WHATSAPP,
+      type: "text",
+      text: { body: messageText }
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Order sent to WhatsApp via Cloud API:', data);
+    showToast("Order sent successfully to WhatsApp! 🚀");
+  })
+  .catch(error => {
+    console.error('Error sending WhatsApp message:', error);
+    showToast("Failed to send order via Cloud API.");
+  });
 
 }
 
@@ -1641,31 +1642,34 @@ document.querySelectorAll(
 
 /* Mobile menu button */
 
-document.querySelector(
+loggerElement = document.querySelector(
   "#mobileMenuBtn"
-).addEventListener(
-  "click",
-  () => {
+);
+if(loggerElement) {
+  loggerElement.addEventListener(
+    "click",
+    () => {
 
-    document.querySelector(
-      ".mobile-search"
-    ).scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-    const mobileInput =
       document.querySelector(
-        "#mobileSearch"
+        ".mobile-search"
+      ).scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      const mobileInput =
+        document.querySelector(
+          "#mobileSearch"
+        );
+
+      setTimeout(
+        () => mobileInput.focus(),
+        300
       );
 
-    setTimeout(
-      () => mobileInput.focus(),
-      300
-    );
-
-  }
-);
+    }
+  );
+}
 
 
 /* Escape key */
