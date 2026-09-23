@@ -95,7 +95,8 @@ const deals = [
     name: "Deal",
     price: 960,
     pieces: "18 pieces",
-     image: "deal1.jpg",
+    emoji: "🔥",
+     image: "d1.jpg",
 
     description:
       "6 Chicken Tikka Samosas + 6 Pizza Samosas + 6 Chicken Sticks.",
@@ -122,7 +123,7 @@ const deals = [
     price: 1080,
     pieces: "24 pieces",
     emoji: "💖",
-    image: "deal2.jpg",
+    image: "d2.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Vegetable Rolls.",
@@ -145,7 +146,7 @@ const deals = [
     price: 2000,
     pieces: "44 pieces",
     emoji: "👑",
-    image: "deal3.jpg",
+    image: "d3.jpg",
 
     description:
       "12 Chicken Samosas + 12 Chicken Rolls + 10 Chicken Sticks + 10 Chicken Tikka Samosas.",
@@ -176,7 +177,7 @@ const deals = [
     price: 600,
     pieces: "12 pieces",
     emoji: "🎉",
-    image: "deal4.jpg",
+    image: "d4.jpg",
 
     description:
       "4 Chicken Samosas + 4 Chicken Rolls + 4 Chicken Sticks.",
@@ -493,8 +494,8 @@ function renderDeals() {
           ${badge}
         </div>
 
-        <div class="deal-image">
-          <img src="${product.image}">
+        <div class="deal-emoji">
+          ${deal.emoji}
         </div>
 
         <h3>
